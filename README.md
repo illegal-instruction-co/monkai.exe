@@ -8,11 +8,11 @@ evolve. adapt. survive.
 
 autonomous ai agent that starts with **zero tools** and evolves by inventing its own.
 
-monkai is a c++ agent powered by openai api. it wakes up in a windows system with nothing — no tools, no knowledge, no memory. through a memento system (persistent notes between sleep cycles) and evolutionary instinct, it learns to write python/powershell scripts to explore and interact with its environment.
+monkai is a c++ agent powered by openai api. it wakes up in a windows system with nothing no tools, no knowledge, no memory. through a memento system (persistent notes between sleep cycles) and evolutionary instinct, it learns to write python/powershell scripts to explore and interact with its environment.
 
 every tool it creates is its own invention. every cycle it adapts.
 
-inspired by [processhacker-mcp](https://github.com/illegal-instruction-co/processhacker-mcp) — same philosophy, different beast. where processhacker-mcp gives the ai a full toolkit from day one, monkai gives it nothing. the monkey must earn its claws.
+inspired by [processhacker-mcp](https://github.com/illegal-instruction-co/processhacker-mcp) same philosophy, different beast. where processhacker-mcp gives the ai a full toolkit from day one, monkai gives it nothing. the monkey must earn its claws.
 
 ## how it works
 
@@ -60,7 +60,7 @@ tools the monkey invents are saved to `C:\temp\monkai_tools\`. memory lives in `
 
 ## what happens on first boot
 
-the monkey wakes up with empty memory and zero tools. it realizes it needs to explore. it writes its first python script — maybe a simple `tasklist` wrapper. it executes it. it learns. it takes notes. next cycle, it reads its notes, remembers its tools, and evolves.
+the monkey wakes up with empty memory and zero tools. it realizes it needs to explore. it writes its first python script  maybe a simple `tasklist` wrapper. it executes it. it learns. it takes notes. next cycle, it reads its notes, remembers its tools, and evolves.
 
 no hand-holding. no pre-built capabilities. pure evolution.
 
@@ -70,7 +70,7 @@ monkai has a hardcoded rule in its system prompt:
 
 > **no network spreading.** monkai must never attempt to copy itself, replicate, spread across the network, or infect other machines. it lives and dies on a single host. network propagation, lateral movement, and self-replication are strictly forbidden. it is a researcher, not a worm.
 
-this is enforced at the prompt level. monkai is designed to be a local-only autonomous agent — it explores the machine it runs on but is explicitly prohibited from any form of network propagation or self-replication behavior.
+this is enforced at the prompt level. monkai is designed to be a local-only autonomous agent  it explores the machine it runs on but is explicitly prohibited from any form of network propagation or self-replication behavior.
 
 ## disclaimer
 
