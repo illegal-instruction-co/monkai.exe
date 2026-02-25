@@ -42,6 +42,7 @@ FetchContent_MakeAvailable(nlohmann_json curl)
 
 add_executable(monkai
     src/main.cpp
+    src/version.cpp
     src/OpenAIClient.cpp
     src/Memento.cpp
     src/ToolEngine.cpp

@@ -1,0 +1,49 @@
+name: Build & Draft Release
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [ main ]
+
+defaults:
+    run:
+        shell: pwsh
+
+jobs:
+    build:
+        runs-on: windows-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                  path: build/_deps
+                  key: ${{ runner.os }}-fetchcontent-${{ hashFiles('CMakeLists.txt') }}
+                  restore-keys: |
+                      ${{ runner.os }}-fetchcontent-
+
+            - name: Read version
+              id: version
+              run: |
+                  $match = Select-String -Path src/version.cpp -Pattern 'VERSION\s*=\s*"([^"]+)"'
+                  $version = $match.Matches.Groups[1].Value
+                  if (-not $version) { Write-Error "Failed to extract VERSION from src/version.cpp"; exit 1 }
+                  "value=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+            - name: Configure CMake
+              run: cmake -B build -G "Visual Studio 17 2022" -A x64
+
+            - name: Build
+              run: cmake --build build --config Release
+
+            - name: Create draft release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: v${{ steps.version.outputs.value }}
+                  name: 🐒 monkai v${{ steps.version.outputs.value }}
+                  draft: true
+                  files: build/Release/monkai.exe
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
