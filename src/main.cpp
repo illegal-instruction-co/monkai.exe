@@ -2,6 +2,7 @@
 #include "Memento.h"
 #include "ToolEngine.h"
 #include "SystemPrompt.h"
+#include "version.h"
 
 #include <iostream>
 #include <string>
@@ -45,7 +46,7 @@ void printBanner() {
  |_| |_| |_|\___/|_| |_|_|\_\__,_|_|
 
    evolve. adapt. survive.
-   v0.1.0 - zero tools, infinite potential
+   v)" << VERSION << R"( - zero tools, infinite potential
 
 )" << endl;
 }
