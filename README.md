@@ -69,4 +69,3 @@ this project is for educational and research purposes. it is published to docume
 ## license
 
 mit
-
